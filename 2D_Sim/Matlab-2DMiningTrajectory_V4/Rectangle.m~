@@ -1,0 +1,31 @@
+%Class to compute and contain the vertices and points along the perimeter of a 2D 
+%rectangle in the body frame with a given offset. Also contains the total rotation and 
+%translation from the initial configuration
+classdef Rectangle
+    properties
+        Verts
+        movedVerts
+        width 
+        length
+        offset
+    end
+    methods
+        function self = Rectangle(length, width, x_offset, y_offset)
+            self.length = length
+            self.width = width
+            self.offset = np.array([x_offset, y_offset])
+
+            %Original vertices in the base frame (Always keep a copy)
+            self.vertices = self.boxPoints(length, width) + self.offset   
+            
+        end
+        
+        function self = boxPoints(self, length, width)
+            self.Verts = [-length/2,-width/2;
+                           -length/2,width/2;
+                           length/2,width/2; 
+                           length/2,-width/2]]))
+            
+        end
+    end
+end
